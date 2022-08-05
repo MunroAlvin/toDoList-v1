@@ -11,6 +11,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+//ejs initilization
+app.set('view engine', 'ejs');
+
+
 app.get("/", function (req, res) {
 
     const currentDate = new Date();
