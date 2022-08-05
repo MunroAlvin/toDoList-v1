@@ -17,35 +17,10 @@ app.set('view engine', 'ejs');
 
 app.get("/", function (req, res) {
 
-    const currentDate = new Date();
-    const today = currentDate.getDay();
-    var day = "";
-    switch (today) {
-        case 0:
-            day = "Sunday";
-            break;
-        case 1:
-            day = "Monday";
-            break;
-        case 2:
-            day = "Tuesday";
-            break;
-        case 3:
-            day = "Wednesday";
-            break;
-        case 4:
-            day = "Thursday";
-            break;
-        case 5:
-            day = "Friday";
-            break;
-        case 6:
-            day = "Saturday";
-            break;
-        default:
-            day = "Invalid day !!";
-            break;
-    }
+    const event = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var day = event.toLocaleDateString("en-US", options);
+
     res.render('list', {
         DAY: day
     });
