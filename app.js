@@ -14,18 +14,32 @@ app.use(bodyParser.urlencoded({
 //ejs initilization
 app.set('view engine', 'ejs');
 
+//variables
+var items = [];
 
 app.get("/", function (req, res) {
 
     const event = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
     var day = event.toLocaleDateString("en-US", options);
 
     res.render('list', {
-        DAY: day
+        DAY: day,
+        newListItem: items
     });
 });
 
+app.post("/", function (req, res) {
+    var item = req.body.newItem;
+
+    items.push(item);
+    res.redirect("/");
+});
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
