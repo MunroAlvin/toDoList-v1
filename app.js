@@ -19,13 +19,36 @@ app.get("/", function (req, res) {
 
     const currentDate = new Date();
     const today = currentDate.getDay();
-    if (today == 6 || today == 0) {
-        console.log("Today is weekend");
-        res.write("Today is weekend") // this sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
-    } else {
-        console.log("Today is week day");
-        res.sendFile(__dirname + "/index.html");
+    var day = "";
+    switch (today) {
+        case 0:
+            day = "Sunday";
+            break;
+        case 1:
+            day = "Monday";
+            break;
+        case 2:
+            day = "Tuesday";
+            break;
+        case 3:
+            day = "Wednesday";
+            break;
+        case 4:
+            day = "Thursday";
+            break;
+        case 5:
+            day = "Friday";
+            break;
+        case 6:
+            day = "Saturday";
+            break;
+        default:
+            day = "Invalid day !!";
+            break;
     }
+    res.render('list', {
+        DAY: day
+    });
 });
 
 
