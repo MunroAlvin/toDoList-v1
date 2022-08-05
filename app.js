@@ -20,9 +20,7 @@ app.get("/", function (req, res) {
         res.write("Today is weekend") // this sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
     } else {
         console.log("Today is week day");
-        res.write("Today is week day");
-        res.write("another message");
-        res.send();
+        res.sendFile(__dirname + "/index.html");
     }
 });
 
