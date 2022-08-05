@@ -9,6 +9,9 @@ const port = 3000;
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 
+// EJS initilization
+app.set('view engine', 'ejs');
+
 app.get("/", function(req, res){
 
 
