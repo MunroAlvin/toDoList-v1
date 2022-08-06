@@ -11,11 +11,14 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+//add css file
+app.use(express.static("public"));
+
 //ejs initilization
 app.set('view engine', 'ejs');
 
 //variables
-var items = [];
+let items = [];
 
 
 
@@ -28,7 +31,7 @@ app.get("/", function (req, res) {
         month: 'long',
         day: 'numeric'
     };
-    var day = event.toLocaleDateString("en-US", options);
+    let day = event.toLocaleDateString("en-US", options);
 
     res.render('list', {
         DAY: day,
@@ -38,7 +41,7 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
 
-    var item = req.body.newItem;
+    let item = req.body.newItem;
 
 
     items.push(item);
