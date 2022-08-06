@@ -17,6 +17,8 @@ app.set('view engine', 'ejs');
 //variables
 var items = [];
 
+
+
 app.get("/", function (req, res) {
 
     const event = new Date();
@@ -30,12 +32,14 @@ app.get("/", function (req, res) {
 
     res.render('list', {
         DAY: day,
-        newListItem: items
+        newListItems: items
     });
 });
 
 app.post("/", function (req, res) {
+
     var item = req.body.newItem;
+
 
     items.push(item);
     res.redirect("/");
